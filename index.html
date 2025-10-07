@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Himisiri - Share your thoughts anonymously</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- iOS Smart App Banner -->
+    <meta
+      name="apple-itunes-app"
+      content="app-id=YOUR_APP_STORE_ID, app-argument=himisiri://open"
+    />
+
+    <!-- Android Chrome intent -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#3C2A4D" />
+
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Himisiri" />
+    <meta
+      property="og:description"
+      content="Share your thoughts anonymously and connect with others"
+    />
+    <meta property="og:image" content="https://himisiri.expo.app/icon.png" />
+    <meta property="og:type" content="website" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="logo">Himisiri</div>
+      <div class="tagline">Share. Discover. Connect. Anonymously.</div>
+
+      <div id="content">
+        <p>Welcome to Himisiri!</p>
+        <div class="loading">
+          You can open the app or download the latest version below.
+        </div>
+      </div>
+
+      <!-- Version + Release Notes -->
+      <div id="version-info" class="version-info">
+        <p><strong>Version:</strong> <span id="version">Loading...</span></p>
+        <p><strong>Release Notes:</strong></p>
+        <ul id="release-notes">
+          <li>Fetching latest notes...</li>
+        </ul>
+      </div>
+
+      <div class="buttons">
+        <a href="#" id="openAppBtn" class="btn btn-primary">Open in App</a>
+        <a
+          id="downloadApkBtn"
+          href="https://play.google.com/store/apps/details?id=com.mohamedodesu.himisiri"
+          class="btn btn-secondary"
+        >
+          Download Latest APK
+        </a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
