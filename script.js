@@ -61,9 +61,8 @@
         }
       }, 2000);
     } else if (/Android/.test(navigator.userAgent)) {
-      const intentUrl = `intent:/${fullPath}#Intent;scheme=himisiri;package=com.mohamedodesu.himisiri;S.browser_fallback_url=${encodeURIComponent(
-        webFallback
-      )};end`;
+      const intentUrl = `intent://#Intent;scheme=himisiri;package=com.mohamedodesu.himisiri;end`;
+
       try {
         window.location.href = intentUrl;
       } catch (e) {
