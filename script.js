@@ -52,7 +52,7 @@
     }
   }
 
-  function attemptAppOpen() {
+  function openApp() {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
       window.location.href = deepLink;
       setTimeout(() => {
@@ -62,7 +62,7 @@
       }, 2000);
     } else if (/Android/.test(navigator.userAgent)) {
       const intentUrl = `intent:/${fullPath}#Intent;scheme=himisiri;package=com.mohamedodesu.himisiri;S.browser_fallback_url=${encodeURIComponent(
-        window.location.href
+        webFallback
       )};end`;
       try {
         window.location.href = intentUrl;
@@ -98,31 +98,26 @@
         `;
         openAppBtn.style.display = "none";
         break;
-      default:
-        openAppBtn.href = deepLink;
     }
   }
 
-  // ✅ Setup open app button manually
-  document.getElementById("openAppBtn").href = deepLink;
+  // ✅ Manual “Open in App” button only
+  const openAppBtn = document.getElementById("openAppBtn");
+  if (openAppBtn) {
+    openAppBtn.href = deepLink;
+    openAppBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openApp();
+    });
+  }
 
-  // Detect if app opens successfully
+  // Detect if app opened
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") {
       console.log("Page became hidden - app likely opened");
     }
   });
 
-  // Try to open the app
-  setTimeout(attemptAppOpen, 500);
-
-  // If still on page after 3s, show install options
-  setTimeout(() => {
-    if (document.visibilityState === "visible") {
-      updateContent("app-not-installed");
-    }
-  }, 3000);
-
-  // ✅ Fetch version + release notes
+  // ✅ Only fetch version + notes — no auto open
   fetchLatestApk();
 })();
